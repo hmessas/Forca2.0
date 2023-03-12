@@ -260,12 +260,26 @@ def main(level):
                             ag()
                         ct.clear()
                         cr , erros=checking_letters(palavra,lg)
+                        if cr == palavra:
+                            WIN.fill(WHITE)
+                            txt = font1.render('Parabéns, você venceu!',1,BLACK)
+                            WIN.blit(txt,((WIDTH/2-txt.get_width()//2),250+(100-txt.get_height())//2))
+                            pygame.display.update()
+                            pygame.time.delay(5000)
+                            menu()
                         if erros==6:
                             draw_derrota(palavra)
                             pygame.display.update()
                             pygame.time.delay(5000)
                             menu()
                     if len(ct)==len(palavra):
+                        if ''.join(ct) == palavra:
+                            WIN.fill(WHITE)
+                            txt = font1.render('Parabéns, você venceu!',1,BLACK)
+                            WIN.blit(txt,((WIDTH/2-txt.get_width()//2),250+(100-txt.get_height())//2))
+                            pygame.display.update()
+                            pygame.time.delay(5000)
+                            menu()
                         status=checking_words(palavra,ct)
                         if status==False:
                             draw_derrota(palavra)
@@ -279,6 +293,7 @@ def main(level):
         draw_lg(lg,palavra)
         draw_suport(lvl)
         draw_volta()
+
         pygame.display.update()
 
     
